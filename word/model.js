@@ -16,7 +16,7 @@ const Word = sequelize.define('word', {
   },
 }, {
   timestamps: false,
-  tableName: 'advertisements'
+  tableName: 'word'
 })
 
-module.exports = Advertisement
+module.exports = Word

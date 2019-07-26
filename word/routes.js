@@ -3,14 +3,14 @@ const Word = require('./model')
 
 const router = new Router()
 
-// router.get('/advertisements', (req, res, next) => {
-//   Advertisement
-//     .findAll()
-//     .then(advertisement => {
-//       res.send({ advertisement })
-//     })
-//     .catch(error => next(error))
-// })
+router.get('/words', (req, res, next) => {
+  Word
+    .findAll()
+    .then(word => {
+      res.send({ word })
+    })
+    .catch(error => next(error))
+})
 
 // router.get('/advertisements/:id', (req, res, next) => {
 //   Advertisement
@@ -25,6 +25,18 @@ const router = new Router()
 //     })
 //     .catch(error => next(error))
 // })
+
+router.post('/words', (req, res) => {
+  Word
+    .create(req.body)
+    .then(word => {
+      if (!word) {
+        return res.status(404).send({
+          message: 'Word does not exist'
+        })
+      }
+    })
+})
 
 // router.post('/advertisements', (req, res, next) => {
 //   Advertisement
